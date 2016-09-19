@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="RealProgress.widget.RealProgress" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>RealProgress</name>
+    <description>The description of this widget.</description>
+
+    <icon />
+
+    <properties>
+        <property key="messageString" type="string" required="true" defaultValue="">
+            <caption>Message</caption>
+            <category>Appearance</category>
+            <description>The message visible within the widget.</description>
+        </property>
+        <property key="progressentity" type="entity">
+            <caption>Progress entity</caption>
+            <category>Data</category>
+            <description>Can be the same as context.</description>
+        </property>		
+        <property key="mfToExecute" type="microflow" required="false" defaultValue="">
+            <caption>Microflow</caption>
+            <category>Behavior</category>
+            <description>Get progress</description>
+            <returnType type="Object" entityProperty="progressentity"/> 
+        </property>
+        <property key="mfAtStart" type="microflow" required="false" defaultValue="">
+            <caption>Starting MF</caption>
+            <category>Behavior</category>
+            <description>Microflow to start when widget is created. Use for progress popup forms and set Close window when ready to true.</description>
+            <returnType type="Void" /> 
+        </property>	
+		 <property key="closeWhenDone" type="boolean" required="true" defaultValue="false">
+            <caption>Close form when done</caption>
+            <category>Behavior</category>
+            <description>Close the pop-up form when the progress is 100. Use for long running procresses with a separate popup form.</description>
+        </property>
+        <property key="messageattr" type="attribute" entityProperty="progressentity">
+            <caption>Message attribute</caption>
+            <category>Data</category>
+            <description>Attribute for an optional message</description> 
+            <attributeTypes>
+                <attributeType name="String"/> 
+            </attributeTypes>
+        </property>
+        <property key="progressattr" type="attribute" required="true" entityProperty="progressentity">
+            <caption>Progress attribute</caption>
+            <category>Data</category>
+            <description>Attribute containing the progress 0-100</description> 
+            <attributeTypes>
+                <attributeType name="Integer"/> 
+                <attributeType name="Decimal"/> 
+            </attributeTypes>
+        </property>		
+    </properties>
+</widget>
+

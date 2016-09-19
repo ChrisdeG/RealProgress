@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="RealProgress.widget.RealProgress" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>RealProgress</name>
+    <description>The description of this widget.</description>
+
+    <icon>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAwUlEQVR4Xq1TWwoCMQzsZfrd43g18c+b+KNXkAUPIOouKC76URqZ4JRQLLtVC2Wa15AMqYsxCg4QN6WkNpAxvhljLvKcZr8JPuFUzNkO/kowNQI7zyPQ0YpKEEIQ733TRY2KCA1QPD572XUruY2njNv9Uu6Pi9rlSKiBLxOcrwdZbxZCPA6d2kSKTaFBAJ+OUOvAdlQlQOBbDXSEVtXL/N8J7F7bd7mVtX+SV9kWlG3W1j3vgS0o1Z79mZg4h8Au1Qv3wZXLR/9I0wAAAFF0RVh0Q29tbWVudABDb3B5cmlnaHQgSU5DT1JTIEdtYkggKHd3dy5pY29uZXhwZXJpZW5jZS5jb20pIC0gVW5saWNlbnNlZCBwcmV2aWV3IGltYWdltppppgAAADh0RVh0Q29weXJpZ2h0AENvcHlyaWdodCBJTkNPUlMgR21iSCAod3d3Lmljb25leHBlcmllbmNlLmNvbSlOzplOAAAAWnpUWHRDb21tZW50AAB4nHPOL6gsykzPKFHw9HP2DwpWcM9N8lDQKC8v18tMzs9LrShILcpMzUtO1UvOz9VU0FUIzcvJTE7NK05NUSgoSi3LTC1XyMxNTE8FALiPGiScvJjjAAAAQXpUWHRDb3B5cmlnaHQAAHicc84vqCzKTM8oUfD0c/YPClZwz03yUNAoLy/Xy0zOz0utKEgtykzNS07VS87P1QQAfTYQaBzd5o8AAAAASUVORK5CYII=</icon>
+
+    <properties>
+		<property key="interval" type="integer" defaultValue="30000">
+            <caption>Interval (in ms)</caption>
+            <category>Behavior</category>
+            <description>Defines how often the progress microflow is called. Note that the interval is in milliseconds, so the default, 5000, equals 5 seconds
+            </description>
+        </property>	
+        <property key="progressentity" type="entity">
+            <caption>Progress entity</caption>
+            <category>Data</category>
+            <description>Must be the same as context.</description>
+        </property>		
+        <property key="mfToExecute" type="microflow" required="false" defaultValue="">
+            <caption>Progress microflow</caption>
+            <category>Behavior</category>
+            <description>Microflow should call the java action 'GetProgress' and set the progress in the progress attribute. Return the object.</description>
+            <returnType type="Object" entityProperty="progressentity"/> 
+        </property>
+        <property key="mfAtStart" type="microflow" required="false" defaultValue="">
+            <caption>Starting microflow</caption>
+            <category>Behavior</category>
+            <description>Microflow to start when the widget is created. Use for progress popup forms and set Close window when ready to true.</description>
+            <returnType type="Void" /> 
+        </property>	
+		 <property key="closeWhenDone" type="boolean" required="true" defaultValue="false">
+            <caption>Close form when done</caption>
+            <category>Behavior</category>
+            <description>Close the pop-up form when the progress is 100. Use for long running procresses with a separate popup form.</description>
+        </property>
+        <property key="messageattr" type="attribute" entityProperty="progressentity">
+            <caption>Message attribute</caption>
+            <category>Data</category>
+            <description>Attribute for an optional message</description> 
+            <attributeTypes>
+                <attributeType name="String"/> 
+            </attributeTypes>
+        </property>
+        <property key="progressattr" type="attribute" required="true" entityProperty="progressentity">
+            <caption>Progress attribute</caption>
+            <category>Data</category>
+            <description>Attribute containing the progress 0-100</description> 
+            <attributeTypes>
+                <attributeType name="Integer"/> 
+                <attributeType name="Decimal"/> 
+            </attributeTypes>
+        </property>		
+    </properties>
+</widget>
+
